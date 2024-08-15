@@ -102,7 +102,7 @@ function Dapp() {
                     {Object.keys(tabs).map((key) => (
                         <button
                             key={key}
-                            onClick={(key) => {
+                            onClick={() => {
                                 setActivePage(key);
 
                                 navigate('?tab=' + key);
