@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { createWeb3Modal, defaultConfig } from '@web3modal/ethers5/react';
+import { HiHome } from 'react-icons/hi';
 import Disclaimer from './components/Disclaimer';
 import { FaXTwitter } from 'react-icons/fa6';
 import NotFound from './components/NotFound';
@@ -40,7 +41,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <div className="star"></div>
             <div className="star"></div>
             <div className="star"></div>
-            <header className="border-b border-b-white">
+            <header className="border-b border-b-white flex gap-2 items-center">
+                <a href="/" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm">
+                    <HiHome />
+                    Home
+                </a>
                 <w3m-button />
             </header>
             <Router>

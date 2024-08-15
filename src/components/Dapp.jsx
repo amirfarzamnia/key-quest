@@ -113,7 +113,7 @@ function Dapp() {
                         ))}
                 </div>
             </div>
-            <div className="flex-1 p-6 bg-gray-900">{tabs[activePage]}</div>
+            <div className="flex-1 p-6">{tabs[activePage]}</div>
         </div>
     );
 }
