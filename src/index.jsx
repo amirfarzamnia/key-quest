@@ -35,20 +35,6 @@ createWeb3Modal({
     enableAnalytics: true
 });
 
-function Header() {
-    const isHomePage = useLocation().pathname === '/';
-
-    return (
-        <header className="border-b border-b-white flex gap-2 items-center">
-            <a href="/" className={`border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm ${isHomePage ? 'bg-gray-700 text-white' : ''}`}>
-                <HiHome />
-                Home
-            </a>
-            <w3m-button />
-        </header>
-    );
-}
-
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <div className="bg-black text-white min-h-screen overflow-hidden flex flex-col">
@@ -78,3 +64,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </div>
     </React.StrictMode>
 );
+
+function Header() {
+    const isHomePage = useLocation().pathname === '/';
+
+    return (
+        <header className="border-b border-b-white flex gap-2 items-center">
+            <a href="/" className={`border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm ${isHomePage ? 'bg-white text-black' : ''}`}>
+                <HiHome />
+                Home
+            </a>
+            <w3m-button />
+        </header>
+    );
+}
