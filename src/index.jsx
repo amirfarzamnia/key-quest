@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, BrowserRouter } from 'react-router-dom';
 import { createWeb3Modal, defaultConfig } from '@web3modal/ethers5/react';
-import { HiHome } from 'react-icons/hi';
 import Disclaimer from './components/Disclaimer';
 import { FaXTwitter } from 'react-icons/fa6';
 import NotFound from './components/NotFound';
 import { FaTelegram } from 'react-icons/fa';
+import { HiHome } from 'react-icons/hi';
 import ReactDOM from 'react-dom/client';
 import Home from './components/Home';
 import Dapp from './components/Dapp';
@@ -35,34 +35,45 @@ createWeb3Modal({
     enableAnalytics: true
 });
 
+function Header() {
+    const isHomePage = useLocation().pathname === '/';
+
+    return (
+        <header className="border-b border-b-white flex gap-2 items-center">
+            <a href="/" className={`border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm ${isHomePage ? 'bg-gray-700 text-white' : ''}`}>
+                <HiHome />
+                Home
+            </a>
+            <w3m-button />
+        </header>
+    );
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <div className="bg-black text-white min-h-screen overflow-hidden flex flex-col">
             <div className="star"></div>
             <div className="star"></div>
             <div className="star"></div>
-            <header className="border-b border-b-white flex gap-2 items-center">
-                <a href="/" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm">
-                    <HiHome />
-                    Home
-                </a>
-                <w3m-button />
-            </header>
-            <Router>
+            <BrowserRouter>
+                <Header />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/disclaimer" element={<Disclaimer />} />
                     <Route path="/dapp" element={<Dapp />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
-            </Router>
-            <footer className="border-t border-t-white mt-auto flex items-center py-4 px-8 gap-4">
-                <a href="#" target="_blank" className="text-2xl">
-                    <FaTelegram />
-                </a>
-                <a href="#" target="_blank" className="text-2xl">
-                    <FaXTwitter />
-                </a>
+            </BrowserRouter>
+            <footer className="border-t border-t-white mt-auto flex items-center py-4 px-8 gap-4 justify-between">
+                <div className="flex items-center gap-2">
+                    <a href="#" target="_blank" className="text-2xl">
+                        <FaTelegram />
+                    </a>
+                    <a href="#" target="_blank" className="text-2xl">
+                        <FaXTwitter />
+                    </a>
+                </div>
+                <span>CA: xxxxxxxxxxxxxxxxxxxxxxx</span>
             </footer>
         </div>
     </React.StrictMode>
