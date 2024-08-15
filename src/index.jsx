@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { createWeb3Modal, defaultConfig } from '@web3modal/ethers5/react';
+import { FaXTwitter } from 'react-icons/fa6';
 import NotFound from './components/NotFound';
+import { FaTelegram } from 'react-icons/fa';
 import ReactDOM from 'react-dom/client';
 import Home from './components/Home';
 import React from 'react';
@@ -45,7 +47,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Router>
-            <footer className="border-t border-t-white mt-auto"></footer>
+            <footer className="border-t border-t-white mt-auto flex items-center py-4 px-8 gap-4">
+                <a href="#" target="_blank" className="text-2xl">
+                    <FaTelegram />
+                </a>
+                <a href="#" target="_blank" className="text-2xl">
+                    <FaXTwitter />
+                </a>
+            </footer>
         </div>
     </React.StrictMode>
 );
