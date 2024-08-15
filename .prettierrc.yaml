@@ -1,0 +1,15 @@
+tabWidth: 4
+printWidth: 100
+endOfLine: crlf
+trailingComma: none
+bracketSameLine: true
+quoteProps: consistent
+
+overrides:
+  - files: ["*.json", "*.yaml"]
+    options:
+      tabWidth: 2
+  - files: ["*.{j,t}s"]
+    options:
+      singleQuote: true
+      printWidth: 5000

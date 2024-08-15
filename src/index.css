@@ -1,0 +1,29 @@
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+
+@font-face {
+    font-family: "New Amsterdam";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/newamsterdam/v1/YA9Vr02Y5lucHqUlbEe51kBtp7CMi8_Q.woff2)
+        format("woff2");
+}
+
+@font-face {
+    font-family: "New Amsterdam";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/newamsterdam/v1/YA9Vr02Y5lucHqUlbEe51kBtp76Miw.woff2)
+        format("woff2");
+}
+
+body {
+    margin: 0;
+}
+
+* {
+    font-family: "New Amsterdam", monospace;
+}
