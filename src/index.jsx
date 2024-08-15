@@ -8,7 +8,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <div className="bg-teal-900">
+        <div className="bg-black text-white min-h-screen">
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
