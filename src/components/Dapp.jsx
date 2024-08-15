@@ -89,12 +89,6 @@ function Dapp() {
         setActivePage(tab);
     }, [location]);
 
-    const handleTabChange = (tab) => {
-        setActivePage(tab);
-
-        navigate('?tab=' + tab);
-    };
-
     return (
         <div className="flex">
             <div className={`bg-gray-800 text-white p-4 ${sidebarOpen ? 'w-64' : 'w-16'} transition-width duration-300`}>
@@ -105,15 +99,18 @@ function Dapp() {
                     </button>
                 </div>
                 <div className="mt-8">
-                    <button onClick={() => handleTabChange('overview')} className={`w-full text-left py-2 px-4 rounded-lg ${activePage === 'overview' ? 'bg-gray-700' : ''}`}>
-                        {sidebarOpen && 'Overview'}
-                    </button>
-                    <button onClick={() => handleTabChange('details')} className={`w-full text-left py-2 px-4 rounded-lg ${activePage === 'details' ? 'bg-gray-700' : ''}`}>
-                        {sidebarOpen && 'Details'}
-                    </button>
-                    <button onClick={() => handleTabChange('datatable')} className={`w-full text-left py-2 px-4 rounded-lg ${activePage === 'datatable' ? 'bg-gray-700' : ''}`}>
-                        {sidebarOpen && 'Data Table'}
-                    </button>
+                    {Object.keys(tabs).map((key) => (
+                        <button
+                            key={key}
+                            onClick={(key) => {
+                                setActivePage(key);
+
+                                navigate('?tab=' + key);
+                            }}
+                            className={`w-full text-left py-2 px-4 rounded-lg ${activePage === key ? 'bg-gray-700' : ''}`}>
+                            {sidebarOpen && key}
+                        </button>
+                    ))}
                 </div>
             </div>
             <div className="flex-1 p-6 bg-gray-900">{tabs[activePage]}</div>
