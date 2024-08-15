@@ -91,26 +91,26 @@ function Dapp() {
 
     return (
         <div className="flex">
-            <div className={`bg-gray-800 text-white p-4 ${sidebarOpen ? 'w-64' : 'w-16'} transition-width duration-300`}>
+            <div className={`text-white p-4 ${sidebarOpen ? 'w-64' : 'w-16'} transition-width duration-200`}>
                 <div className="flex items-center justify-between">
-                    <h2 className={`text-lg font-bold ${sidebarOpen ? 'block' : 'hidden'}`}>Menu</h2>
                     <button onClick={() => setSidebarOpen(!sidebarOpen)} className="focus:outline-none">
                         <FaBars />
                     </button>
                 </div>
                 <div className="mt-8">
-                    {Object.keys(tabs).map((key) => (
-                        <button
-                            key={key}
-                            onClick={() => {
-                                setActivePage(key);
+                    {sidebarOpen &&
+                        Object.keys(tabs).map((key) => (
+                            <button
+                                key={key}
+                                onClick={() => {
+                                    setActivePage(key);
 
-                                navigate('?tab=' + key);
-                            }}
-                            className={`w-full text-left py-2 px-4 rounded-lg ${activePage === key ? 'bg-gray-700' : ''}`}>
-                            {sidebarOpen && key}
-                        </button>
-                    ))}
+                                    navigate('?tab=' + key);
+                                }}
+                                className={`w-full border border-white text-left py-2 px-4 ${activePage === key ? 'bg-white text-black' : 'hover:bg-zinc-900'}`}>
+                                {key}
+                            </button>
+                        ))}
                 </div>
             </div>
             <div className="flex-1 p-6 bg-gray-900">{tabs[activePage]}</div>
