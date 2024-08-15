@@ -29,7 +29,7 @@ function Home() {
                         <FaFilePdf />
                         Declaration
                     </a>
-                    <a href="#" className="border border-white px-4 py-2 flex gap-2 items-center rounded-sm hover:bg-white hover:text-black duration-200">
+                    <a href="/disclaimer" className="border border-white px-4 py-2 flex gap-2 items-center rounded-sm hover:bg-white hover:text-black duration-200">
                         <RiErrorWarningFill />
                         Disclaimer
                     </a>

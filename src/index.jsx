@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { createWeb3Modal, defaultConfig } from '@web3modal/ethers5/react';
+import Disclaimer from './components/Disclaimer';
 import { FaXTwitter } from 'react-icons/fa6';
 import NotFound from './components/NotFound';
 import { FaTelegram } from 'react-icons/fa';
@@ -44,6 +45,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/disclaimer" element={<Disclaimer />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Router>
