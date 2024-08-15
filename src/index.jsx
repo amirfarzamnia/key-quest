@@ -32,17 +32,20 @@ createWeb3Modal({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <div className="bg-black text-white min-h-screen">
+        <div className="bg-black text-white min-h-screen overflow-hidden flex flex-col">
             <div className="star"></div>
             <div className="star"></div>
             <div className="star"></div>
-            <w3m-button />
+            <header className="border-b border-b-white">
+                <w3m-button />
+            </header>
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Router>
+            <footer className="border-t border-t-white mt-auto"></footer>
         </div>
     </React.StrictMode>
 );
