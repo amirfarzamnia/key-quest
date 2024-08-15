@@ -9,6 +9,9 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <div className="bg-black text-white min-h-screen">
+            <div className="star"></div>
+            <div className="star"></div>
+            <div className="star"></div>
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />

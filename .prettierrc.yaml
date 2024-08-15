@@ -12,4 +12,4 @@ overrides:
   - files: ["*.{j,t,cs}s"]
     options:
       singleQuote: true
-      printWidth: 5000
+      printWidth: 20000
