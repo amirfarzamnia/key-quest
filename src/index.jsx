@@ -69,12 +69,15 @@ function Header() {
     const isHomePage = useLocation().pathname === '/';
 
     return (
-        <header className="border-b border-b-white flex gap-2 items-center">
-            <a href="/" className={`border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm ${isHomePage ? 'bg-white text-black' : ''}`}>
-                <HiHome />
-                Home
-            </a>
-            <w3m-button />
+        <header className="border-b border-b-white flex gap-2 items-center justify-between">
+            <h1>Passive Spectators</h1>
+            <div className="flex gap-2 items-center">
+                <a href="/" className={`border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm ${isHomePage ? 'bg-white text-black' : ''}`}>
+                    <HiHome />
+                    Home
+                </a>
+                <w3m-button />
+            </div>
         </header>
     );
 }
