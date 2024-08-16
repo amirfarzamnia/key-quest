@@ -39,6 +39,26 @@ createWeb3Modal({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
+        <App />
+    </React.StrictMode>
+);
+
+function App() {
+    const [loading, setLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        setTimeout(() => setLoading(false), 2500);
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="bg-black text-white min-h-screen overflow-hidden flex items-center justify-center border border-white">
+                <div className="loading"></div>
+            </div>
+        );
+    }
+
+    return (
         <div className="bg-black text-white min-h-screen overflow-hidden flex flex-col border border-white">
             <div className="star"></div>
             <div className="star"></div>
@@ -87,5 +107,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <span>CA: xxxxxxxxxxxxxxxxxxxxxxx</span>
             </footer>
         </div>
-    </React.StrictMode>
-);
+    );
+}
