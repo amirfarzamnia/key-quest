@@ -65,6 +65,16 @@
     }
 }
 
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background-color: black;
+}
+::-webkit-scrollbar-thumb {
+    background-color: white;
+}
+
 * {
     font-family: 'Chakra Petch', monospace;
 }
