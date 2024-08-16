@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation, BrowserRouter } from 'react-router-dom';
 import { createWeb3Modal, defaultConfig } from '@web3modal/ethers5/react';
 import Disclaimer from './components/Disclaimer';
+import { MdDashboard } from 'react-icons/md';
 import { FaXTwitter } from 'react-icons/fa6';
 import NotFound from './components/NotFound';
 import { FaTelegram } from 'react-icons/fa';
@@ -66,15 +67,22 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 function Header() {
-    const isHomePage = useLocation().pathname === '/';
+    const location = useLocation();
+
+    const isHomePage = location.pathname === '/';
+    const isDappPage = location.pathname === '/dapp';
 
     return (
-        <header className="border-b border-b-white flex gap-2 items-center justify-between">
-            <h1>Passive Spectators</h1>
+        <header className="border-b border-b-white flex gap-2 items-center justify-between px-8">
+            <h1 className="font-bold text-xl">Passive Spectators</h1>
             <div className="flex gap-2 items-center">
                 <a href="/" className={`border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm ${isHomePage ? 'bg-white text-black' : ''}`}>
                     <HiHome />
                     Home
+                </a>
+                <a href="/dapp" className={`border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm ${isDappPage ? 'bg-white text-black' : ''}`}>
+                    <MdDashboard />
+                    Dapp
                 </a>
                 <w3m-button />
             </div>
