@@ -1,6 +1,6 @@
 import { createWeb3Modal, defaultConfig } from '@web3modal/ethers5/react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import { FaTelegram, FaRegUser } from 'react-icons/fa';
+import { FaTelegram, FaRegUser, FaCheck } from 'react-icons/fa';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import Disclaimer from './components/Disclaimer';
 import { MdDashboard } from 'react-icons/md';
@@ -44,7 +44,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 function App() {
+    const [notification, setNotification] = React.useState(false);
     const [loading, setLoading] = React.useState(true);
+
+    const ca = 'xxxxxxxxxxxxxxxxxxxxxxx';
 
     React.useEffect(() => {
         setTimeout(() => setLoading(false), 500);
@@ -96,16 +99,33 @@ function App() {
                 </Routes>
             </BrowserRouter>
             <footer className="border-t border-t-white mt-auto flex items-center py-4 px-8 gap-4 justify-between">
-                <div className="flex items-center gap-2">
-                    <a href="#" target="_blank" className="text-2xl">
+                <div className="flex items-center gap-6">
+                    <a href="#" target="_blank" className="text-2xl transform transition-transform duration-300 hover:scale-110">
                         <FaTelegram />
                     </a>
-                    <a href="#" target="_blank" className="text-2xl">
+                    <a href="#" target="_blank" className="text-2xl transform transition-transform duration-300 hover:scale-110">
                         <FaXTwitter />
                     </a>
                 </div>
-                <span>CA: xxxxxxxxxxxxxxxxxxxxxxx</span>
+                <span
+                    onClick={() => {
+                        navigator.clipboard.writeText(ca).then(() => {
+                            setNotification(true);
+
+                            setTimeout(() => setNotification(false), 2000);
+                        });
+                    }}
+                    className="cursor-pointer hover:underline"
+                    title="Click to copy contract address">
+                    CA: {ca}
+                </span>
             </footer>
+            {notification && (
+                <div className="fixed bottom-20 right-4 bg-white text-black px-4 py-2 rounded flex items-center gap-2">
+                    <FaCheck />
+                    Contract address copied
+                </div>
+            )}
         </div>
     );
 }
