@@ -63,30 +63,30 @@ function App() {
             <div className="star"></div>
             <div className="star"></div>
             <div className="star"></div>
-            <BrowserRouter>
-                <header className="border-b border-b-white flex gap-2 items-center justify-between px-8 py-2">
-                    <h1 className="font-bold text-xl">Passive Spectators</h1>
-                    <div className="flex gap-2 items-center">
-                        {window.location.pathname === '/' ? (
-                            <>
-                                <a href="/dapp" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm">
-                                    <MdDashboard />
-                                    Dapp
-                                </a>
-                                <a href="/dashboard" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm">
-                                    <FaRegUser />
-                                    Dashboard
-                                </a>
-                            </>
-                        ) : (
-                            <a href="/" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm group">
-                                <BsArrowLeftShort className="group-hover:-translate-x-1 transform duration-200" />
-                                Back
+            <header className="border-b border-b-white flex gap-2 items-center justify-between px-8 py-2">
+                <h1 className="font-bold text-xl">Passive Spectators</h1>
+                <div className="flex gap-2 items-center">
+                    {window.location.pathname === '/' ? (
+                        <>
+                            <a href="/dapp" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm">
+                                <MdDashboard />
+                                Dapp
                             </a>
-                        )}
-                        <w3m-button />
-                    </div>
-                </header>
+                            <a href="/dashboard" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm">
+                                <FaRegUser />
+                                Dashboard
+                            </a>
+                        </>
+                    ) : (
+                        <a href="/" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm group">
+                            <BsArrowLeftShort className="group-hover:-translate-x-1 transform duration-200" />
+                            Back
+                        </a>
+                    )}
+                    <w3m-button />
+                </div>
+            </header>
+            <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/disclaimer" element={<Disclaimer />} />
