@@ -72,17 +72,17 @@ function App() {
                 <div className="flex gap-2 items-center">
                     {window.location.pathname === '/' ? (
                         <>
-                            <a href="/dapp" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm">
+                            <a href="/dapp" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded">
                                 <MdDashboard />
                                 Dapp
                             </a>
-                            <a href="/dashboard" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm">
+                            <a href="/dashboard" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded">
                                 <FaRegUser />
                                 Dashboard
                             </a>
                         </>
                     ) : (
-                        <a href="/" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm group">
+                        <a href="/" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded group">
                             <BsArrowLeftShort className="group-hover:-translate-x-1 transform duration-200" />
                             Back
                         </a>
