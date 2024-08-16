@@ -52,7 +52,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                                     <MdDashboard />
                                     Dapp
                                 </a>
-                                <a href="/login" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm">
+                                <a href="/dashboard" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded-sm">
                                     <FaRegUser />
                                     Dashboard
                                 </a>
