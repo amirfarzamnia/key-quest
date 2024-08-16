@@ -13,7 +13,7 @@ function Dashboard() {
 
                     setErrorMessage('Password is incorrect');
                 }}
-                className="bg-white text-black p-8 rounded-lg shadow-lg text-center">
+                className="bg-white text-black p-8 rounded shadow-lg text-center">
                 <h2 className="text-2xl font-semibold mb-4">Enter Password</h2>
                 <p className="text-sm mb-4">Note: Password is hidden in the game</p>
                 <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="w-full p-2 text-lg border border-gray-300 rounded mb-4" placeholder="Enter your password" />
