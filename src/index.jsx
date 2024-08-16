@@ -9,6 +9,7 @@ import { FaXTwitter } from 'react-icons/fa6';
 import ReactDOM from 'react-dom/client';
 import Home from './components/Home';
 import Dapp from './components/Dapp';
+import Game from './components/Game';
 import React from 'react';
 
 import './index.css';
@@ -70,6 +71,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route path="/" element={<Home />} />
                     <Route path="/disclaimer" element={<Disclaimer />} />
                     <Route path="/dapp" element={<Dapp />} />
+                    <Route path="/game" element={<Game />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
