@@ -1,11 +1,11 @@
-import { createWeb3Modal, defaultConfig, useWeb3Modal } from '@web3modal/ethers5/react';
 import { Route, Routes, useLocation, BrowserRouter } from 'react-router-dom';
+import { createWeb3Modal, defaultConfig } from '@web3modal/ethers5/react';
+import { FaXTwitter, FaRegChartBar } from 'react-icons/fa6';
+import { BsArrowLeftShort } from 'react-icons/bs';
 import Disclaimer from './components/Disclaimer';
 import { MdDashboard } from 'react-icons/md';
-import { FaXTwitter } from 'react-icons/fa6';
 import NotFound from './components/NotFound';
 import { FaTelegram } from 'react-icons/fa';
-import { HiHome } from 'react-icons/hi';
 import ReactDOM from 'react-dom/client';
 import Home from './components/Home';
 import Dapp from './components/Dapp';
@@ -35,25 +35,6 @@ createWeb3Modal({
     projectId: '72d31a31e44763d401b07e629ffa3414',
     enableAnalytics: true
 });
-
-function ConnectWalletButton() {
-    const [account, setAccount] = React.useState(null);
-    const { open } = useWeb3Modal();
-
-    return (
-        <button
-            onClick={async () => {
-                const provider = await open();
-                const signer = provider.getSigner();
-                const address = await signer.getAddress();
-
-                setAccount(address);
-            }}
-            className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-2 flex items-center gap-1 rounded-sm">
-            {account ? `Connected: ${account.slice(0, 6)}...${account.slice(-4)}` : 'Connect Wallet'}
-        </button>
-    );
-}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
@@ -86,25 +67,27 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 function Header() {
-    const location = useLocation();
-
-    const isHomePage = location.pathname === '/';
-    const isDappPage = location.pathname === '/dapp';
-
     return (
         <header className="border-b border-b-white flex gap-2 items-center justify-between px-8">
             <h1 className="font-bold text-xl">Passive Spectators</h1>
-            <div className="flex gap-2 items-center">
-                <a href="/" className={`border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm ${isHomePage ? 'bg-white text-black' : ''}`}>
-                    <HiHome />
-                    Home
+            {useLocation().pathname === '/' ? (
+                <div className="flex gap-2 items-center">
+                    <a href="/" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm">
+                        <FaRegChartBar />
+                        Statics
+                    </a>
+                    <a href="/dapp" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm">
+                        <MdDashboard />
+                        Dapp
+                    </a>
+                    <w3m-button />
+                </div>
+            ) : (
+                <a href="/" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm group">
+                    <BsArrowLeftShort className="group-hover:-translate-x-1 transform duration-200" />
+                    Back
                 </a>
-                <a href="/dapp" className={`border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 flex items-center gap-1 rounded-sm ${isDappPage ? 'bg-white text-black' : ''}`}>
-                    <MdDashboard />
-                    Dapp
-                </a>
-                <ConnectWalletButton />
-            </div>
+            )}
         </header>
     );
 }
