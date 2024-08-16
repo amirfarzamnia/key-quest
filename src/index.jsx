@@ -3,6 +3,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { FaTelegram, FaRegUser, FaCheck } from 'react-icons/fa';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import Disclaimer from './components/Disclaimer';
+import Dashboard from './components/Dashboard';
 import { MdDashboard } from 'react-icons/md';
 import NotFound from './components/NotFound';
 import { FaXTwitter } from 'react-icons/fa6';
@@ -95,6 +96,7 @@ function App() {
                     <Route path="/disclaimer" element={<Disclaimer />} />
                     <Route path="/dapp" element={<Dapp />} />
                     <Route path="/game" element={<Game />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
