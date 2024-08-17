@@ -1,4 +1,4 @@
-import { createWeb3Modal, defaultConfig } from '@web3modal/ethers5/react';
+import { createWeb3Modal, defaultConfig, useWeb3ModalAccount } from '@web3modal/ethers5/react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { FaTelegram, FaRegUser, FaCheck } from 'react-icons/fa';
 import { BsArrowLeftShort } from 'react-icons/bs';
@@ -48,6 +48,8 @@ function App() {
     const [notification, setNotification] = React.useState(false);
     const [loading, setLoading] = React.useState(true);
 
+    const { address } = useWeb3ModalAccount();
+
     const ca = 'xxxxxxxxxxxxxxxxxxxxxxx';
 
     React.useEffect(() => {
@@ -74,6 +76,7 @@ function App() {
             <header className="border-b border-b-white flex gap-2 items-center justify-between px-8 py-2">
                 <h1 className="font-bold text-xl">Passive Spectators</h1>
                 <div className="flex gap-2 items-center">
+                    {address && <span>{address}</span>}
                     {window.location.pathname === '/' ? (
                         <>
                             <a href="/statics" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded">
