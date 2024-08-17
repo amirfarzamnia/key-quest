@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
+import { useTable } from 'react-table';
 import Chart from 'react-apexcharts';
 import React from 'react';
 
@@ -317,6 +318,30 @@ function Statics() {
         }
     };
 
+    const data = React.useMemo(
+        () => [
+            { 'Pos': '1', 'Wallet ID': 'abc123', 'Knowledge': 'High', 'Performance': 'Good', 'Trust': 'High', 'Activity': 'Active', 'Participation': 'High', 'Incentive': 'High' },
+            { 'Pos': '2', 'Wallet ID': 'def456', 'Knowledge': 'Medium', 'Performance': 'Average', 'Trust': 'Medium', 'Activity': 'Moderate', 'Participation': 'Medium', 'Incentive': 'Medium' }
+        ],
+        []
+    );
+
+    const columns = React.useMemo(
+        () => [
+            { Header: 'Pos', accessor: 'Pos' },
+            { Header: 'Wallet ID', accessor: 'Wallet ID' },
+            { Header: 'Knowledge', accessor: 'Knowledge' },
+            { Header: 'Performance', accessor: 'Performance' },
+            { Header: 'Trust', accessor: 'Trust' },
+            { Header: 'Activity', accessor: 'Activity' },
+            { Header: 'Participation', accessor: 'Participation' },
+            { Header: 'Incentive', accessor: 'Incentive' }
+        ],
+        []
+    );
+
+    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
+
     const tabs = {
         overview: (
             <div className="grid grid-cols-2 gap-6">
@@ -363,7 +388,40 @@ function Statics() {
                 </div>
             </div>
         ),
-        datatable: <div className="text-white">Data Table Page Content</div>
+        datatable: (
+            <div className="p-6">
+                <div className="overflow-x-auto">
+                    <table {...getTableProps()} className="min-w-full bg-white bg-opacity-5 rounded">
+                        <thead>
+                            {headerGroups.map((headerGroup) => (
+                                <tr {...headerGroup.getHeaderGroupProps()}>
+                                    {headerGroup.headers.map((column) => (
+                                        <th {...column.getHeaderProps()} className="py-3 px-6 text-left text-gray-400 font-bold">
+                                            {column.render('Header')}
+                                        </th>
+                                    ))}
+                                </tr>
+                            ))}
+                        </thead>
+                        <tbody {...getTableBodyProps()}>
+                            {rows.map((row) => {
+                                prepareRow(row);
+
+                                return (
+                                    <tr {...row.getRowProps()} className="border-b border-gray-600">
+                                        {row.cells.map((cell) => (
+                                            <td {...cell.getCellProps()} className="py-3 px-6 text-white">
+                                                {cell.render('Cell')}
+                                            </td>
+                                        ))}
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        )
     };
 
     React.useEffect(() => {
