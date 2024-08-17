@@ -75,6 +75,11 @@
     background-color: white;
 }
 
+::selection {
+    background-color: white;
+    color: black;
+}
+
 * {
     font-family: 'Chakra Petch', monospace;
 }
