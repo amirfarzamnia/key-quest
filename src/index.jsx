@@ -7,9 +7,9 @@ import Dashboard from './components/Dashboard';
 import { MdDashboard } from 'react-icons/md';
 import NotFound from './components/NotFound';
 import { FaXTwitter } from 'react-icons/fa6';
+import Statics from './components/Statics';
 import ReactDOM from 'react-dom/client';
 import Home from './components/Home';
-import Dapp from './components/Dapp';
 import Game from './components/Game';
 import React from 'react';
 
@@ -76,9 +76,9 @@ function App() {
                 <div className="flex gap-2 items-center">
                     {window.location.pathname === '/' ? (
                         <>
-                            <a href="/dapp" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded">
+                            <a href="/statics" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded">
                                 <MdDashboard />
-                                Dapp
+                                Statics
                             </a>
                             <a href="/dashboard" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded">
                                 <FaRegUser />
@@ -98,7 +98,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/disclaimer" element={<Disclaimer />} />
-                    <Route path="/dapp" element={<Dapp />} />
+                    <Route path="/statics" element={<Statics />} />
                     <Route path="/game" element={<Game />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="*" element={<NotFound />} />

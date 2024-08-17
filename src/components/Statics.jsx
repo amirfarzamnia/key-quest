@@ -3,7 +3,7 @@ import { FaBars } from 'react-icons/fa';
 import Chart from 'react-apexcharts';
 import React from 'react';
 
-function Dapp() {
+function Statics() {
     const [activePage, setActivePage] = React.useState('overview');
     const [sidebarOpen, setSidebarOpen] = React.useState(true);
     const location = useLocation();
@@ -118,4 +118,4 @@ function Dapp() {
     );
 }
 
-export default Dapp;
+export default Statics;
