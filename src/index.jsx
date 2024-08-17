@@ -64,9 +64,13 @@ function App() {
 
     return (
         <div className="bg-black text-white min-h-screen overflow-hidden flex flex-col border border-white">
-            <div className="star"></div>
-            <div className="star"></div>
-            <div className="star"></div>
+            {['/', '/dashboard'].includes(window.location.pathname) && (
+                <>
+                    <div className="star"></div>
+                    <div className="star"></div>
+                    <div className="star"></div>
+                </>
+            )}
             <header className="border-b border-b-white flex gap-2 items-center justify-between px-8 py-2">
                 <h1 className="font-bold text-xl">Passive Spectators</h1>
                 <div className="flex gap-2 items-center">
