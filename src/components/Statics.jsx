@@ -9,72 +9,217 @@ function Statics() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const [priceChartOptions] = React.useState({
+    const priceChartOptions = {
         chart: {
-            type: 'line',
-            background: '#000'
+            type: 'area',
+            height: 300,
+            toolbar: {
+                show: false
+            },
+            fontFamily: 'Chakra Petch, monospace',
+            zoom: {
+                enabled: false
+            }
+        },
+        series: [
+            {
+                name: 'Passive Price',
+                data: [
+                    [1327359600000, 0.001],
+                    [1327446000000, 0.001]
+                ]
+            }
+        ],
+        dataLabels: {
+            enabled: false
         },
         xaxis: {
-            categories: ['01 Mar', '03 Mar', '05 Mar', '07 Mar', '09 Mar', '11 Mar', '14 Mar'],
-            labels: { style: { colors: '#fff' } },
-            axisBorder: { color: '#fff' }
+            type: 'datetime',
+            min: new Date('01 Mar 2012').getTime(),
+            title: {
+                text: 'Date UTC',
+                offsetY: 6,
+                offsetX: -20,
+                style: {
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    color: '#ffffff'
+                }
+            }
         },
         yaxis: {
-            labels: { style: { colors: '#fff' } }
+            title: {
+                text: 'Price USD',
+                style: {
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    color: '#ffffff'
+                }
+            }
         },
-        stroke: {
-            curve: 'smooth'
+        title: {
+            text: 'Passive Price',
+            align: 'center',
+            margin: 10,
+            style: {
+                fontSize: '16px',
+                fontWeight: 'bold',
+                color: '#ffffff'
+            }
         },
         tooltip: {
-            theme: 'dark'
+            y: {
+                formatter: (i) => `${i} USD`
+            }
         },
         grid: {
-            borderColor: '#444'
-        },
-        colors: ['#00E396']
-    });
-
-    const [priceChartData] = React.useState([
-        {
-            name: 'Passive Price',
-            data: [0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001]
+            borderColor: '#9b9b9b25'
         }
-    ]);
+    };
 
-    const [burnedChartOptions] = React.useState({
+    const burnedChartOptions = {
+        chart: {
+            type: 'area',
+            stacked: false,
+            height: 300,
+            toolbar: {
+                show: false
+            },
+            fontFamily: 'Chakra Petch, monospace',
+            zoom: {
+                enabled: false
+            }
+        },
+        series: [
+            {
+                name: 'Total Burned',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }
+        ],
+        dataLabels: {
+            enabled: false
+        },
+        xaxis: {
+            categories: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            title: {
+                text: 'Days Since Launch',
+                offsetY: 6,
+                offsetX: -20,
+                style: {
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    color: '#ffffff'
+                }
+            }
+        },
+        yaxis: {
+            title: {
+                text: 'MILLION',
+                style: {
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    color: '#ffffff'
+                }
+            }
+        },
+        title: {
+            text: 'Total Passive Burned',
+            align: 'center',
+            margin: 10,
+            style: {
+                fontSize: '16px',
+                fontWeight: 'bold',
+                color: '#ffffff'
+            }
+        },
+        tooltip: {
+            y: {
+                formatter: (i) => `${i} Million`
+            }
+        },
+        grid: {
+            borderColor: '#9b9b9b25'
+        }
+    };
+
+    const treasuryChartOptions = {
         chart: {
             type: 'bar',
-            background: '#000'
+            height: 300,
+            toolbar: {
+                show: false
+            },
+            fontFamily: 'Chakra Petch, monospace',
+            foreColor: '#C0C0C0'
+        },
+        dataLabels: {
+            enabled: false
+        },
+        series: [
+            {
+                name: 'TX Fees',
+                data: [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: 'Treasury Value',
+                data: [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: 'Total Withdraw',
+                data: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }
+        ],
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded'
+            }
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
         },
         xaxis: {
-            categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
-            labels: { style: { colors: '#fff' } },
-            axisBorder: { color: '#fff' }
+            categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8', 'Week 9', 'Week 10', 'Week 11', 'Week 12', 'Week 13', 'Week 14', 'Week 15']
         },
         yaxis: {
-            labels: { style: { colors: '#fff' } }
+            title: {
+                text: 'Value (ETH)',
+                style: {
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    color: '#ffffff'
+                }
+            }
+        },
+        title: {
+            text: 'Treasury Income/Outcome Overview',
+            align: 'center',
+            margin: 10,
+            style: {
+                fontSize: '16px',
+                fontWeight: 'bold',
+                color: '#ffffff'
+            }
         },
         tooltip: {
-            theme: 'dark'
+            y: {
+                formatter: (i) => `${i} ETH`
+            }
         },
         grid: {
-            borderColor: '#444'
-        },
-        colors: ['#FF4560']
-    });
-
-    const [burnedChartData] = React.useState([
-        {
-            name: 'Total Passive Burned',
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+            borderColor: '#9b9b9b25'
         }
-    ]);
+    };
 
     const tabs = {
         overview: (
             <div className="grid grid-cols-2 gap-6">
-                <Chart options={priceChartOptions} series={priceChartData} type="line" height="300" />
-                <Chart options={burnedChartOptions} series={burnedChartData} type="bar" height="300" />
+                <Chart options={priceChartOptions} series={priceChartOptions.series} type="area" height="300" />
+                <Chart options={burnedChartOptions} series={burnedChartOptions.series} type="area" height="300" />
+                <Chart options={treasuryChartOptions} series={treasuryChartOptions.series} type="bar" height="300" className="col-span-2" />
             </div>
         ),
         details: <div className="text-white">Details Page Content</div>,
