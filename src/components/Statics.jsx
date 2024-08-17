@@ -214,15 +214,155 @@ function Statics() {
         }
     };
 
+    const radialBarOptions = {
+        chart: {
+            type: 'radialBar',
+            height: 300,
+            toolbar: {
+                show: false
+            },
+            fontFamily: 'Font1, sans-serif',
+            foreColor: '#C0C0C0'
+        },
+        plotOptions: {
+            radialBar: {
+                track: {
+                    show: false
+                },
+                startAngle: -180,
+                endAngle: 180
+            }
+        },
+        stroke: {
+            lineCap: 'round'
+        },
+        series: [0, 0, 0],
+        labels: ['Open Positions', 'Long Positions', 'Short Positions'],
+        legend: {
+            show: true
+        }
+    };
+
+    const barChartOptions = {
+        chart: {
+            type: 'bar',
+            height: 350,
+            stacked: true,
+            toolbar: {
+                show: false
+            },
+            fontFamily: 'Font1, sans-serif',
+            foreColor: '#C0C0C0'
+        },
+        series: [
+            {
+                name: 'Passive',
+                data: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: 'ETH',
+                data: [2, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: 'Stables',
+                data: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            },
+            {
+                name: 'Other',
+                data: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }
+        ],
+        plotOptions: {
+            bar: {
+                borderRadius: 5
+            }
+        },
+        xaxis: {
+            categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10'],
+            title: {
+                text: 'Days Since Launch',
+                offsetY: 6,
+                offsetX: -35,
+                style: {
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    color: '#ffffff'
+                }
+            }
+        },
+        yaxis: {
+            title: {
+                text: 'Value (ETH)',
+                style: {
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    color: '#ffffff'
+                }
+            }
+        },
+        legend: {
+            position: 'top'
+        },
+        title: {
+            text: 'Passive Treasury Details',
+            align: 'center',
+            style: {
+                fontSize: '16px',
+                fontWeight: 'bold',
+                color: '#ffffff'
+            }
+        },
+        grid: {
+            borderColor: '#9b9b9b25'
+        }
+    };
+
     const tabs = {
         overview: (
             <div className="grid grid-cols-2 gap-6">
-                <Chart options={priceChartOptions} series={priceChartOptions.series} type="area" height="300" />
-                <Chart options={burnedChartOptions} series={burnedChartOptions.series} type="area" height="300" />
-                <Chart options={treasuryChartOptions} series={treasuryChartOptions.series} type="bar" height="300" className="col-span-2" />
+                <Chart className="bg-white bg-opacity-5 rounded" options={priceChartOptions} series={priceChartOptions.series} type="area" height="300" />
+                <Chart className="bg-white bg-opacity-5 rounded" options={burnedChartOptions} series={burnedChartOptions.series} type="area" height="300" />
+                <Chart className="bg-white bg-opacity-5 rounded col-span-2" options={treasuryChartOptions} series={treasuryChartOptions.series} type="bar" height="300" />
             </div>
         ),
-        details: <div className="text-white">Details Page Content</div>,
+        details: (
+            <div className="p-6">
+                <div className="flex flex-wrap justify-between gap-2 mb-10">
+                    {Object.entries({ 'Treasury Value': 0, 'Total Holders': 0, 'Total Locked': 0, 'Locking APY': 0 }).map(([title, value]) => (
+                        <div key={title} className="card bg-transparent p-4 rounded-md">
+                            <div className="card-body">
+                                <span className="card-title text-secondary font-bold text-gray-400">{title}</span>
+                                <h3 className="card-text text-white font-bold">{value}</h3>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="col-span-1 mb-5 bg-white bg-opacity-5 rounded">
+                        <h4 className="text-white text-center font-bold mb-2">Open Positions</h4>
+                        <div id="chart1" className="rounded-lg p-1">
+                            <Chart options={radialBarOptions} series={radialBarOptions.series} type="radialBar" height={300} />
+                        </div>
+                    </div>
+                    <div className="col-span-1 mb-5 bg-white bg-opacity-5 rounded">
+                        <h4 className="text-secondary text-center font-bold mb-5 text-white">Trading Stats</h4>
+                        <div className="grid grid-cols-2 gap-4 px-4">
+                            {Object.entries({ 'Total Platform PNL': 0, '24hr Platform PNL': 0, 'Total Volume': 0, '24hr Volume': 0 }).map(([label, value]) => (
+                                <div key={label} className="text-center">
+                                    <span className="text-secondary font-bold text-sm text-gray-400">{label}</span>
+                                    <h3 className="text-white font-bold">{value}</h3>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="col-span-2 mb-4">
+                        <div id="chart2" className="p-1 bg-white bg-opacity-5 rounded">
+                            <Chart options={barChartOptions} series={barChartOptions.series} type="bar" height={350} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
         datatable: <div className="text-white">Data Table Page Content</div>
     };
 
