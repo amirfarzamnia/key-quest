@@ -91,7 +91,6 @@ function App() {
                             Back
                         </a>
                     )}
-                    <w3m-button />
                 </div>
             </header>
             <BrowserRouter>
