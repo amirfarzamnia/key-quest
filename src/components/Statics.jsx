@@ -463,7 +463,7 @@ function Statics() {
 
     return (
         <div className="flex">
-            <div className={`text-white p-4 ${sidebarOpen ? 'w-64' : 'w-16'} transition-width duration-200`}>
+            <div className={`sticky top-0 text-white p-4 ${sidebarOpen ? 'w-64' : 'w-16'} transition-width duration-200`}>
                 <div className="flex items-center justify-between">
                     <button onClick={() => setSidebarOpen(!sidebarOpen)} className="focus:outline-none">
                         <FaBars />
@@ -485,7 +485,9 @@ function Statics() {
                         ))}
                 </div>
             </div>
-            <div className="flex-1 p-6">{tabs[activePage]}</div>
+            <div className="flex-1 p-6 overflow-y-auto" style={{ maxHeight: '82vh' }}>
+                {tabs[activePage]}
+            </div>
         </div>
     );
 }
