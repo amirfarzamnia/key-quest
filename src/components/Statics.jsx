@@ -356,7 +356,7 @@ function Statics() {
             </div>
         ),
         details: (
-            <div className="p-6">
+            <div className="md:p-6">
                 <div className="flex flex-wrap justify-between gap-2 mb-10">
                     {Object.entries({ 'Treasury Value': 0, 'Total Holders': 0, 'Total Locked': 0, 'Locking APY': 0 }).map(([title, value]) => (
                         <div key={title} className="card bg-transparent p-4 rounded-md">
@@ -394,7 +394,7 @@ function Statics() {
             </div>
         ),
         involvement: (
-            <div className="p-6">
+            <div className="md:p-6">
                 <div className="overflow-x-auto">
                     <table {...getTableProps()} className="min-w-full bg-white bg-opacity-5 rounded">
                         <thead>
@@ -428,7 +428,7 @@ function Statics() {
             </div>
         ),
         governance: (
-            <div className="p-6">
+            <div className="md:p-6">
                 <p className="mb-4">You can use this form to submit a suggestion.</p>
                 {isConnected ? (
                     <form onSubmit={(e) => e.preventDefault()} className="bg-white bg-opacity-5 p-4 rounded">
