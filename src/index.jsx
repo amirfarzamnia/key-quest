@@ -13,7 +13,7 @@ import Home from './components/Home';
 import Game from './components/Game';
 import React from 'react';
 
-import './index.css';
+import './css/index.css';
 
 const Header = ({ address }) => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
