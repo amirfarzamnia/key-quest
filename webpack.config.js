@@ -1,3 +1,1 @@
-module.exports = {
-    entry: './src/index.jsx'
-};
+module.exports = { entry: "./src/index.jsx" };
