@@ -101,6 +101,12 @@ body {
     animation: loading 1s infinite;
 }
 
+@media (max-width: 760px) {
+    .responsive {
+        font-size: 0.75rem !important;
+    }
+}
+
 .star:nth-child(1) {
     width: 1px;
     height: 1px;

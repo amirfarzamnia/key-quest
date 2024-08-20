@@ -2,8 +2,6 @@ import { RiErrorWarningFill } from 'react-icons/ri';
 import { FaPlay, FaFilePdf } from 'react-icons/fa';
 import React from 'react';
 
-import '../css/home.css';
-
 function Home() {
     return (
         <div className="flex flex-col md:flex-row justify-between">
