@@ -462,8 +462,8 @@ function Statics() {
     }, [location]);
 
     return (
-        <div className="flex">
-            <div className={`sticky top-0 text-white p-4 ${sidebarOpen ? 'w-64' : 'w-16'} transition-width duration-200`}>
+        <div className="flex flex-col md:flex-row">
+            <div className={`text-white p-4 ${sidebarOpen ? 'w-full md:w-64' : 'w-16'} transition-width duration-200 md:sticky top-0`}>
                 <div className="flex items-center justify-between">
                     <button onClick={() => setSidebarOpen(!sidebarOpen)} className="focus:outline-none">
                         <FaBars />
