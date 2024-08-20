@@ -1,6 +1,6 @@
 import { createWeb3Modal, defaultConfig, useWeb3ModalAccount } from '@web3modal/ethers5/react';
+import { FaTelegram, FaRegUser, FaCheck, FaBars, FaTimes } from 'react-icons/fa';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import { FaTelegram, FaRegUser, FaCheck } from 'react-icons/fa';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import Disclaimer from './components/Disclaimer';
 import Dashboard from './components/Dashboard';
@@ -14,6 +14,61 @@ import Game from './components/Game';
 import React from 'react';
 
 import './index.css';
+
+const Header = ({ address }) => {
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+    return (
+        <header className="border-b border-b-white flex gap-2 items-center justify-between px-8 py-2 overflow-x-auto">
+            <h1 className="font-bold text-xl text-nowrap">Passive Spectators</h1>
+            <div className="flex gap-2 items-center">
+                {address && <span className="hidden md:block">{address}</span>}
+                {!isMenuOpen && (
+                    <button className="text-2xl md:hidden" onClick={() => setIsMenuOpen(true)}>
+                        {<FaBars />}
+                    </button>
+                )}
+                <div className="hidden md:flex gap-2 items-center">
+                    {window.location.pathname === '/' ? (
+                        <>
+                            <a href="/statics" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded">
+                                <MdDashboard />
+                                Statics
+                            </a>
+                            <a href="/dashboard" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded">
+                                <FaRegUser />
+                                Dashboard
+                            </a>
+                        </>
+                    ) : (
+                        <a href="/" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded group">
+                            <BsArrowLeftShort className="group-hover:-translate-x-1 transform duration-200" />
+                            Back
+                        </a>
+                    )}
+                </div>
+            </div>
+            {isMenuOpen && (
+                <div className="absolute top-0 left-0 w-full h-screen bg-black flex flex-col items-center justify-center gap-4 z-10 md:hidden">
+                    <button className="text-2xl md:hidden" onClick={() => setIsMenuOpen(false)}>
+                        {<FaTimes />}
+                    </button>
+                    <a href="/statics" className="text-white text-2xl" onClick={() => setIsMenuOpen(false)}>
+                        Statics
+                    </a>
+                    <a href="/dashboard" className="text-white text-2xl" onClick={() => setIsMenuOpen(false)}>
+                        Dashboard
+                    </a>
+                    {window.location.pathname !== '/' && (
+                        <a href="/" className="text-white text-2xl" onClick={() => setIsMenuOpen(false)}>
+                            Back
+                        </a>
+                    )}
+                </div>
+            )}
+        </header>
+    );
+};
 
 createWeb3Modal({
     themeMode: 'light',
@@ -73,29 +128,7 @@ function App() {
                     <div className="star"></div>
                 </>
             )}
-            <header className="border-b border-b-white flex gap-2 items-center justify-between px-8 py-2">
-                <h1 className="font-bold text-xl">Passive Spectators</h1>
-                <div className="flex gap-2 items-center">
-                    {address && <span>{address}</span>}
-                    {window.location.pathname === '/' ? (
-                        <>
-                            <a href="/statics" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded">
-                                <MdDashboard />
-                                Statics
-                            </a>
-                            <a href="/dashboard" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded">
-                                <FaRegUser />
-                                Dashboard
-                            </a>
-                        </>
-                    ) : (
-                        <a href="/" className="border border-white hover:bg-white hover:text-black duration-200 text-xl px-4 py-1 flex items-center gap-2 rounded group">
-                            <BsArrowLeftShort className="group-hover:-translate-x-1 transform duration-200" />
-                            Back
-                        </a>
-                    )}
-                </div>
-            </header>
+            <Header address={address} />
             <div className="overflow-y-auto" style={{ maxHeight: '82vh' }}>
                 <BrowserRouter>
                     <Routes>
