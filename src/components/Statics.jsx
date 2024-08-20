@@ -1,4 +1,4 @@
-import { useWeb3ModalAccount } from '@web3modal/ethers5/react';
+import { useWeb3Modal, useWeb3ModalAccount } from '@web3modal/ethers5/react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { useTable } from 'react-table';
@@ -8,9 +8,12 @@ import React from 'react';
 function Statics() {
     const [activePage, setActivePage] = React.useState('overview');
     const [sidebarOpen, setSidebarOpen] = React.useState(true);
-    const { address } = useWeb3ModalAccount();
+
     const location = useLocation();
     const navigate = useNavigate();
+
+    const { address, isConnected } = useWeb3ModalAccount();
+    const { open } = useWeb3Modal();
 
     const priceChartOptions = {
         chart: {
@@ -427,19 +430,25 @@ function Statics() {
         governance: (
             <div className="p-6">
                 <p className="mb-4">You can use this form to submit a suggestion.</p>
-                <form onSubmit={(e) => e.preventDefault()} className="bg-white bg-opacity-5 p-4 rounded">
-                    <div className="mb-4">
-                        <label className="block mb-4">Your Wallet ID:</label>
-                        <input type="text" value={address} required readOnly className="w-full px-3 py-2 bg-black border border-white rounded outline-none" />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block mb-4">Description:</label>
-                        <textarea name="description" required className="w-full px-3 py-2 bg-black border border-white rounded outline-none" rows="5" placeholder="Enter your suggestion here..."></textarea>
-                    </div>
-                    <button type="submit" className="border border-white px-4 py-2 flex gap-2 items-center justify-center rounded hover:bg-white hover:text-black duration-200">
-                        Submit
+                {isConnected ? (
+                    <form onSubmit={(e) => e.preventDefault()} className="bg-white bg-opacity-5 p-4 rounded">
+                        <div className="mb-4">
+                            <label className="block mb-4">Your Wallet ID:</label>
+                            <input type="text" value={address} required readOnly className="w-full px-3 py-2 bg-black border border-white rounded outline-none" />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block mb-4">Description:</label>
+                            <textarea name="description" required className="w-full px-3 py-2 bg-black border border-white rounded outline-none" rows="5" placeholder="Enter your suggestion here..."></textarea>
+                        </div>
+                        <button type="submit" className="border border-white px-4 py-2 flex gap-2 items-center justify-center rounded hover:bg-white hover:text-black duration-200">
+                            Submit
+                        </button>
+                    </form>
+                ) : (
+                    <button className="border border-white px-4 py-2 flex gap-2 items-center rounded hover:bg-white hover:text-black duration-200" onClick={() => open()}>
+                        Connect Wallet to Continue
                     </button>
-                </form>
+                )}
             </div>
         )
     };
