@@ -349,10 +349,10 @@ function Statics() {
 
     const tabs = {
         overview: (
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Chart className="bg-white bg-opacity-5 rounded" options={priceChartOptions} series={priceChartOptions.series} type="area" height="300" />
                 <Chart className="bg-white bg-opacity-5 rounded" options={burnedChartOptions} series={burnedChartOptions.series} type="area" height="300" />
-                <Chart className="bg-white bg-opacity-5 rounded col-span-2" options={treasuryChartOptions} series={treasuryChartOptions.series} type="bar" height="300" />
+                <Chart className="bg-white bg-opacity-5 rounded col-span-1 md:col-span-2" options={treasuryChartOptions} series={treasuryChartOptions.series} type="bar" height="300" />
             </div>
         ),
         details: (
@@ -485,9 +485,7 @@ function Statics() {
                         ))}
                 </div>
             </div>
-            <div className="flex-1 p-6 overflow-y-auto" style={{ maxHeight: '82vh' }}>
-                {tabs[activePage]}
-            </div>
+            <div className="flex-1 p-6 overflow-y-auto sidebar">{tabs[activePage]}</div>
         </div>
     );
 }

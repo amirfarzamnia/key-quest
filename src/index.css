@@ -107,6 +107,12 @@ body {
     }
 }
 
+@media (min-width: 760px) {
+    .sidebar {
+        max-height: 82vh;
+    }
+}
+
 .star:nth-child(1) {
     width: 1px;
     height: 1px;
