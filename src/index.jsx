@@ -19,7 +19,7 @@ const Header = ({ address }) => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     return (
-        <header className="border-b border-b-white flex gap-2 items-center justify-between px-8 py-2 overflow-x-auto">
+        <header className="border-b border-b-white flex gap-2 items-center justify-between p-4 md:p-8 py-2 overflow-x-auto">
             <h1 className="font-bold text-xl text-nowrap">Passive Spectators</h1>
             <div className="flex gap-2 items-center">
                 {address && <span className="hidden md:block">{address}</span>}
@@ -129,7 +129,7 @@ function App() {
                 </>
             )}
             <Header address={address} />
-            <div className="overflow-y-auto" style={{ maxHeight: '82vh' }}>
+            <div className="overflow-y-auto" style={{ maxHeight: '85vh' }}>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Home />} />
@@ -141,7 +141,7 @@ function App() {
                     </Routes>
                 </BrowserRouter>
             </div>
-            <footer className="border-t border-t-white mt-auto flex items-center py-4 px-8 gap-4 justify-between">
+            <footer className="border-t border-t-white mt-auto flex items-center py-4 p-4 md:p-8 gap-4 justify-between">
                 <div className="flex items-center gap-6">
                     <a href="#" target="_blank" className="text-2xl transform transition-transform duration-300 hover:scale-110">
                         <FaTelegram />
