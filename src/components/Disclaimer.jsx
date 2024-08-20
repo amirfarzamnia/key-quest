@@ -2,7 +2,7 @@ import React from 'react';
 
 const Disclaimer = () => {
     return (
-        <div className="text-white p-8 flex flex-col gap-4">
+        <div className="text-white p-4 md:p-8 flex flex-col gap-4">
             <h2 className="font-extrabold">Passive Disclaimer</h2>
             <p>All the information on this website is published in good faith and for general information purposes only. The Passive Spectators is distributed on a basis that it will be useful and serve only within the grounds and limits described on the above-mentioned website.</p>
             <p>Passive Spectators is a platform. We are not a broker, financial institution, or creditor. Services provided on this website do not include an offer to sell or a solicitation of an offer to buy any securities, options, futures, or other derivatives related to securities in any jurisdiction and its content is not prescribed by securities laws. Passive Spectators is not a platform to invest and it does not cooperate with investors and other investment services. An activity of this platform precludes any connection with ethereal or immaterial assets, which also exclude a possibility to sell, buy or hold such an asset as tokens and to receive certain income.</p>
