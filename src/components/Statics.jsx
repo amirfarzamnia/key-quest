@@ -350,9 +350,9 @@ function Statics() {
     const tabs = {
         overview: (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Chart className="bg-white bg-opacity-5 rounded" options={priceChartOptions} series={priceChartOptions.series} type="area" height="300" />
-                <Chart className="bg-white bg-opacity-5 rounded" options={burnedChartOptions} series={burnedChartOptions.series} type="area" height="300" />
-                <Chart className="bg-white bg-opacity-5 rounded col-span-1 md:col-span-2" options={treasuryChartOptions} series={treasuryChartOptions.series} type="bar" height="300" />
+                <Chart className="bg-white bg-opacity-5 p-5 rounded" options={priceChartOptions} series={priceChartOptions.series} type="area" height="300" />
+                <Chart className="bg-white bg-opacity-5 p-5 rounded" options={burnedChartOptions} series={burnedChartOptions.series} type="area" height="300" />
+                <Chart className="bg-white bg-opacity-5 p-5 rounded col-span-1 md:col-span-2" options={treasuryChartOptions} series={treasuryChartOptions.series} type="bar" height="300" />
             </div>
         ),
         details: (
@@ -368,14 +368,14 @@ function Statics() {
                     ))}
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="col-span-1 mb-5 bg-white bg-opacity-5 rounded">
+                    <div className="col-span-1 mb-5 bg-white bg-opacity-5 rounded p-4">
                         <h4 className="text-white text-center font-bold mb-2">Open Positions</h4>
                         <div id="chart1" className="rounded-lg p-1">
                             <Chart options={radialBarOptions} series={radialBarOptions.series} type="radialBar" height={300} />
                         </div>
                     </div>
-                    <div className="col-span-1 mb-5 bg-white bg-opacity-5 rounded">
-                        <h4 className="text-secondary text-center font-bold mb-5 text-white">Trading Stats</h4>
+                    <div className="col-span-1 mb-5 bg-white bg-opacity-5 rounded p-4">
+                        <h4 className="text-secondary text-center font-bold m-5 text-white">Trading Stats</h4>
                         <div className="grid grid-cols-2 gap-4 px-4">
                             {Object.entries({ 'Total Platform PNL': 0, '24hr Platform PNL': 0, 'Total Volume': 0, '24hr Volume': 0 }).map(([label, value]) => (
                                 <div key={label} className="text-center">
@@ -386,7 +386,7 @@ function Statics() {
                         </div>
                     </div>
                     <div className="col-span-2 mb-4">
-                        <div id="chart2" className="p-1 bg-white bg-opacity-5 rounded">
+                        <div id="chart2" className="bg-white bg-opacity-5 rounded p-4">
                             <Chart options={barChartOptions} series={barChartOptions.series} type="bar" height={350} />
                         </div>
                     </div>
@@ -431,7 +431,7 @@ function Statics() {
             <div className="md:p-6">
                 <p className="mb-4">You can use this form to submit a suggestion.</p>
                 {isConnected ? (
-                    <form onSubmit={(e) => e.preventDefault()} className="bg-white bg-opacity-5 p-4 rounded">
+                    <form onSubmit={(e) => e.preventDefault()} className="bg-white bg-opacity-5 p-5 rounded">
                         <div className="mb-4">
                             <label className="block mb-4">Your Wallet ID:</label>
                             <input type="text" value={address} required readOnly className="w-full px-3 py-2 bg-black border border-white rounded outline-none" />
