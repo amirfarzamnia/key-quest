@@ -96,16 +96,18 @@ function App() {
                     )}
                 </div>
             </header>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/disclaimer" element={<Disclaimer />} />
-                    <Route path="/statics" element={<Statics />} />
-                    <Route path="/game" element={<Game />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-            </BrowserRouter>
+            <div className="overflow-y-auto" style={{ maxHeight: '82vh' }}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/disclaimer" element={<Disclaimer />} />
+                        <Route path="/statics" element={<Statics />} />
+                        <Route path="/game" element={<Game />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </BrowserRouter>
+            </div>
             <footer className="border-t border-t-white mt-auto flex items-center py-4 px-8 gap-4 justify-between">
                 <div className="flex items-center gap-6">
                     <a href="#" target="_blank" className="text-2xl transform transition-transform duration-300 hover:scale-110">
