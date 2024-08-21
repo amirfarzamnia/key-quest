@@ -349,11 +349,23 @@ function Statics() {
 
     const tabs = {
         overview: (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Chart className="bg-white bg-opacity-5 p-5 rounded" options={priceChartOptions} series={priceChartOptions.series} type="area" height="300" />
-                <Chart className="bg-white bg-opacity-5 p-5 rounded" options={burnedChartOptions} series={burnedChartOptions.series} type="area" height="300" />
-                <Chart className="bg-white bg-opacity-5 p-5 rounded col-span-1 md:col-span-2" options={treasuryChartOptions} series={treasuryChartOptions.series} type="bar" height="300" />
-            </div>
+            <>
+                <div className="flex flex-wrap justify-between gap-2 mb-10">
+                    {Object.entries({ 'Price (USD)': 0, 'Market Cap': 0, '24H Volume': 0, 'Total Burned': 0 }).map(([title, value]) => (
+                        <div key={title} className="card bg-transparent p-4 rounded-md">
+                            <div className="card-body">
+                                <span className="card-title text-secondary font-bold text-gray-400">{title}</span>
+                                <h3 className="card-text text-white font-bold">{value}</h3>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <Chart className="bg-white bg-opacity-5 p-5 rounded" options={priceChartOptions} series={priceChartOptions.series} type="area" height="300" />
+                    <Chart className="bg-white bg-opacity-5 p-5 rounded" options={burnedChartOptions} series={burnedChartOptions.series} type="area" height="300" />
+                    <Chart className="bg-white bg-opacity-5 p-5 rounded col-span-1 md:col-span-2" options={treasuryChartOptions} series={treasuryChartOptions.series} type="bar" height="300" />
+                </div>
+            </>
         ),
         details: (
             <div className="md:p-6">
